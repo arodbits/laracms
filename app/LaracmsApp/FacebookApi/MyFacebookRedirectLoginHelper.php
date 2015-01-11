@@ -33,7 +33,7 @@ class MyFacebookRedirectLoginHelper extends FacebookRedirectLoginHelper{
 	*/
 
 	public function loadState(){
-		return $this->state = Session::get('state');
+		return $this->state = \Session::get('state');
 	}
 
 }

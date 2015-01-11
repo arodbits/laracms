@@ -9,7 +9,9 @@ class FacebookLogin {
 	public function __construct(){
 		// The next information is supposed to be in a secure configuration file.
 		// FacebookLogin Application Id
-	
+		$appId = \Config::get('facebookApi.appId');
+		// FacebookLogin Application Secret
+		$appSecret = \Config::get('facebookApi.appSecret');
 
 		FacebookSession::setDefaultApplication($appId, $appSecret);
 
