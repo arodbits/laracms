@@ -23,13 +23,24 @@ Pull requests for bugs may be sent without creating any proposal issue.
 
 If you believe that you know of a solution for a bug that has been filed on GitHub, please leave a comment detailing your proposed fix.
 
+#### To contribute (After following the before guidance)
+
+    Fork it
+    Create your feature branch (git checkout -b my-new-feature)
+    Make your changes
+    Run the tests, adding new ones for your own code if necessary (phpunit)
+    Commit your changes (git commit -am 'Added some feature')
+    Push to the branch (git push origin my-new-feature)
+    Create new Pull Request
+
+
 ## Feature Requests
 
 If you have an idea for a new feature you would like to see added to Laravel, you may create an issue on GitHub with [Request] in the title. The feature request will then be reviewed by [@anthony2727](https://github.com/anthony2727).
 
 ## Coding Standards
 
-The `Laracms` project follows the [PSR-0](http://www.php-fig.org/psr/psr-0/), [PSR-1](http://www.php-fig.org/psr/psr-1/) and [PSR-2](http://www.php-fig.org/psr/psr-2/) coding standards. 
+The `Laracms` project follows the [PSR-4](http://www.php-fig.org/psr/psr-4/) coding standards. 
 
 Although the current codebase isn't compliant yet, pull requests are required to adhere to these coding standards.
 
