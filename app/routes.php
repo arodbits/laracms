@@ -20,3 +20,7 @@ Route::get('/', function()
 Route::get('/login','AuthWithPasswordController@index');
 Route::post('/login','AuthWithPasswordController@doLogin');
 
+// Facebook Login Routes
+Route::get('login/facebook', 'AuthWithFacebookController@facebookRedirect');
+Route::get('login/facebookCallback', 'AuthWithFacebookController@facebookCallback');
+

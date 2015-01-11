@@ -5,7 +5,10 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"guzzle/guzzle": "~3.9",
+		"facebook/php-sdk-v4": "~4.0"
+		
 	},
 	"autoload": {
 		"classmap": [
