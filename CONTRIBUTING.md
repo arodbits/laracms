@@ -23,7 +23,7 @@ Pull requests for bugs may be sent without creating any proposal issue.
 
 If you believe that you know of a solution for a bug that has been filed on GitHub, please leave a comment detailing your proposed fix.
 
-#### To contribute (After following the before guidance)
+#### To contribute (After following the pulling request guidance before)
 
     Fork it
     Create your feature branch (git checkout -b my-new-feature)
