@@ -13,11 +13,14 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+ 	new \Acme\Test\Foo();
+ 	
+	// return View::make('hello');
 });
 
 
-Route::get('/login','AuthWithPasswordController@index');
+Route::get('/login','LoginController@index');
+
 Route::post('/login','AuthWithPasswordController@doLogin');
 
 // Facebook Login Routes

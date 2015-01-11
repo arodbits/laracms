@@ -1,9 +1,14 @@
 <?php 
-namespace laracms\FacebookApi 
+namespace LaracmsApp\FacebookApi; 
 
-use Facebook\FacebookRedirectLoginHelper 
+use Facebook\FacebookRedirectLoginHelper; 
 
 class MyFacebookRedirectLoginHelper extends FacebookRedirectLoginHelper{
+
+
+	public function __construct($redirectUrl){
+		parent::__construct($redirectUrl);
+	}
 
 	/*
 	*	Override FacebookRedirectLoginHelper
@@ -20,7 +25,7 @@ class MyFacebookRedirectLoginHelper extends FacebookRedirectLoginHelper{
 	*/
 
 	public function storeState($state){
-		Session::set('state',$state);
+		\Session::set('state',$state);
 	}
 
 	/*

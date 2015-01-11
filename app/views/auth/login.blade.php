@@ -5,11 +5,15 @@
 
 @section('content')
 	<h1>LOGIN</h1>
-
+	
 	{{Form::open(['Route' => 'login', 'Method'=> 'post'])}}
 	{{Form::text('username')}}
 	{{Form::password('password')}}
 	{{Form::submit('Enter')}}
 	{{Form::close()}}
+
+	| OR
+
+	{{HTML::link($facebookLoginUrl, 'Sign in with Facebook')}}
 
 @stop
