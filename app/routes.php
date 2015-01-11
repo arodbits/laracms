@@ -15,3 +15,8 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::get('/login','AuthWithPasswordController@index');
+Route::post('/login','AuthWithPasswordController@doLogin');
+
