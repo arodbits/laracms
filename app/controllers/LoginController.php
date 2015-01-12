@@ -5,7 +5,7 @@ class LoginController extends BaseController{
 	protected $fbInstance;
 
 	public function __construct(){
-		$this->fbInstance = App::make('facebook');
+		$this->fbInstance = Facebook::getFacebookLoginInstance();
 	}
 		
 	public function index(){

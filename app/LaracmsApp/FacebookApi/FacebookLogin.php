@@ -9,6 +9,10 @@ class FacebookLogin {
 	public function __construct(MyFacebookRedirectLoginHelper $helper){
 		$this->helper = $helper;
 	}
+
+	public function getFacebookLoginInstance(){
+		return $this;
+	}
 	/*
 	 * @return FacebookSession object 
 	 */
