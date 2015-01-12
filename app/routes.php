@@ -13,17 +13,16 @@
 
 Route::get('/', function()
 {
- 	new \Acme\Test\Foo();
- 	
+
 	// return View::make('hello');
 });
 
 
 Route::get('/login','LoginController@index');
+Route::post('/login','LoginController@doLoginWithPassword');
+Route::get('login/facebook', 'LoginController@doLoginWithFacebook');
+Route::get('login/facebookCallback', 'LoginController@facebookCallback');
 
-Route::post('/login','AuthWithPasswordController@doLogin');
 
-// Facebook Login Routes
-Route::get('login/facebook', 'AuthWithFacebookController@facebookRedirect');
-Route::get('login/facebookCallback', 'AuthWithFacebookController@facebookCallback');
+
 

@@ -6,28 +6,37 @@ class FacebookLogin {
 
 	protected $helper;
 
-	public function __construct(){
-		// The next information is supposed to be in a secure configuration file.
-		// FacebookLogin Application Id
+	public function __construct($redirectUrl){
+
+		// FacebookApi Application Id
 		$appId = \Config::get('facebookApi.appId');
-		// FacebookLogin Application Secret
+		// FacebookApi Application Secret
 		$appSecret = \Config::get('facebookApi.appSecret');
-
+		// Connection with FacebookApi
 		FacebookSession::setDefaultApplication($appId, $appSecret);
-
-		$this->helper = new MyFacebookRedirectLoginHelper('http://localhost:8000/login/facebookCallback');
-		
+		/* save locally Helper class for getting a facebookLoginUrl, 
+		 * facebookLogoutUrl or sessionFromRedirect. 
+		*/
+		$this->helper = new MyFacebookRedirectLoginHelper($redirectUrl);
 	}
-
-	public function login(){
-
+	/*
+	 * @return FacebookSession object 
+	 */
+	public function getSession(){
+		return $this->helper->getSessionFromRedirect();
 	}
-	public function logout(){
-
+	/*
+	 * @param next_url redirect url 
+	 */
+	public function getLogoutUrl($next_url){
+		$session = $this->getSession();
+		$this->helper->getLogoutUrl($session, $next_url);
 	}
+	/*
+	 * @return String url 
+	 */
 	public function getLoginUrl(){
-		$helper = $this->helper;
-		return $helper->getLoginUrl();
+		return $this->helper->getLoginUrl();
 	}
 
 } 
