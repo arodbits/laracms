@@ -1,7 +1,6 @@
 <?php 
 namespace LaracmsApp\FacebookApi;
 
-
 class FacebookLogin {
 
 	protected $helper;
@@ -9,10 +8,7 @@ class FacebookLogin {
 	public function __construct(MyFacebookRedirectLoginHelper $helper){
 		$this->helper = $helper;
 	}
-
-	public function getFacebookLoginInstance(){
-		return $this;
-	}
+	
 	/*
 	 * @return FacebookSession object 
 	 */
@@ -39,8 +35,6 @@ class FacebookLogin {
 	public function getLoginUrl(){
 		return $this->helper->getLoginUrl();
 	}
-
-
 
 } 
 
