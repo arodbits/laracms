@@ -1,29 +1,26 @@
 <?php 
 namespace LaracmsApp\FacebookApi;
-use Facebook\FacebookSession;
+
 
 class FacebookLogin {
 
 	protected $helper;
 
-	public function __construct($redirectUrl){
-
-		// FacebookApi Application Id
-		$appId = \Config::get('facebookApi.appId');
-		// FacebookApi Application Secret
-		$appSecret = \Config::get('facebookApi.appSecret');
-		// Connection with FacebookApi
-		FacebookSession::setDefaultApplication($appId, $appSecret);
-		/* save locally Helper class for getting a facebookLoginUrl, 
-		 * facebookLogoutUrl or sessionFromRedirect. 
-		*/
-		$this->helper = new MyFacebookRedirectLoginHelper($redirectUrl);
+	public function __construct(MyFacebookRedirectLoginHelper $helper){
+		$this->helper = $helper;
 	}
 	/*
 	 * @return FacebookSession object 
 	 */
 	public function getSession(){
-		return $this->helper->getSessionFromRedirect();
+		try{
+			$session = $this->helper->getSessionFromRedirect();
+		}catch(FacebookSessionException $ex){
+			die($ex);
+		}catch(\Exception $e){
+			die($e);
+		}
+		return $session;
 	}
 	/*
 	 * @param next_url redirect url 
@@ -38,6 +35,8 @@ class FacebookLogin {
 	public function getLoginUrl(){
 		return $this->helper->getLoginUrl();
 	}
+
+
 
 } 
 

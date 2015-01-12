@@ -5,7 +5,7 @@ class LoginController extends BaseController{
 	protected $fbInstance;
 
 	public function __construct(){
-		$this->fbInstance = new LaracmsApp\FacebookApi\FacebookLogin(Config::get('facebookApi.callbackUrl'));
+		$this->fbInstance = App::make('facebook');
 	}
 		
 	public function index(){
