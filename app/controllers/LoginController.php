@@ -15,10 +15,9 @@ class LoginController extends BaseController{
 	public function doLoginWithPassword(){
 
 	}
-	public function doLoginWithFacebook(){
 
-	}
 	public function facebookCallback(){
+		if(!$this->fbInstance->getSession());
 		dd($this->fbInstance->getSession()->getToken());
 	}
 

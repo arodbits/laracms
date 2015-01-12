@@ -20,11 +20,11 @@ class FacebookServiceProvider extends ServiceProvider{
 			$appId = \Config::get('facebookApi.appId');
 			// FacebookApi Application Secret
 			$appSecret = \Config::get('facebookApi.appSecret');
-			// Connection with FacebookApi
+			// Connection with the FacebookApi
 			FacebookSession::setDefaultApplication($appId, $appSecret);
-
+			// Get the helper from the call
 			$helper = new MyFacebookRedirectLoginHelper(\Config::get('facebookApi.callbackUrl'));
-			
+			// return an instance of the class FacebookLogin. The class takes a MyFacebookRedirectLoginHelper Parameter  
 			return new FacebookLogin($helper);
 
 		});
