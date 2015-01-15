@@ -26,14 +26,16 @@ class LoginController extends BaseController{
 			$request = new FacebookRequest($session, 'GET', '/me/');
 			$response = $request->execute();
 			$object = $response->getGraphObject('Facebook\GraphUser');
-			dd($object);
-
-			$user = new User();
-			$user->email = $object->getEmail();
-			$user->email;
 			
 
+			$user = User::where('email', $object->getEmail());
 
+			if(!$user->exists()){
+
+				dd('create a new profile');
+
+			}
+			
 		}
 
 	}   

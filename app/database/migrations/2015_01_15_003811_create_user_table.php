@@ -16,8 +16,10 @@ class CreateUserTable extends Migration {
 		{
 			$table->string('email')->unique();
 			$table->string('password');
-			$table->string('fb_token');
-			$table->string('fbId')->nullable();
+			$table->string('fb_access_token');
+			$table->string('fb_Id')->nullable();
+			$table->string('twitter_access_token');
+			$table->string('twitter_Id')->nullable();
 			$table->timestamps();
 		});
 	}
