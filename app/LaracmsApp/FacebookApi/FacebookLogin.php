@@ -33,8 +33,8 @@ class FacebookLogin {
 	/*
 	 * @return String url 
 	 */
-	public function getLoginUrl(){
-		return $this->helper->getLoginUrl();
+	public function getLoginUrl($permission=array()){
+		return $this->helper->getLoginUrl($permission);
 	}
 
 } 

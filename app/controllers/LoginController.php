@@ -6,7 +6,8 @@ use Facebook\FacebookRequestException;
 class LoginController extends BaseController{
 
 	public function index(){
-		return View::make('auth.login', array('facebookLoginUrl'=>FacebookLogin::getLoginUrl()));
+		$permission = array('public_profile','email', 'user_friends');
+		return View::make('auth.login', array('facebookLoginUrl'=>FacebookLogin::getLoginUrl($permission)));
 	}
 
 	public function doLoginWithPassword(){
@@ -22,10 +23,17 @@ class LoginController extends BaseController{
 
 			// This will have a better solution, by now let's just stick to it. 
 
-			$request = new FacebookRequest($session, 'GET', '/me');
+			$request = new FacebookRequest($session, 'GET', '/me/');
 			$response = $request->execute();
-			$object = $response->getGraphObject();
+			$object = $response->getGraphObject('Facebook\GraphUser');
 			dd($object);
+
+			$user = new User();
+			$user->email = $object->getEmail();
+			$user->email;
+			
+
+
 		}
 
 	}   
