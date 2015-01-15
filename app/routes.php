@@ -24,5 +24,7 @@ Route::get('login/facebook', 'LoginController@doLoginWithFacebook');
 Route::get('login/facebookCallback', 'LoginController@facebookCallback');
 
 
+Route::get('dashboard', 'DashboardController@index');
+
 
 

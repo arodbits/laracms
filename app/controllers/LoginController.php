@@ -28,13 +28,20 @@ class LoginController extends BaseController{
 			$object = $response->getGraphObject('Facebook\GraphUser');
 			
 
-			$user = User::where('email', $object->getEmail());
+			$user = User::where('email', $object->getEmail())->first();
 
-			if(!$user->exists()){
-
-				dd('create a new profile');
-
+			if(!$user){
+				
+				$user = new User();
+				$user->email = $object->getEmail();
+				$user->facebook_id=$object->getId();
+				$user->save();
 			}
+
+			$user->facebook_access_token = $session->getToken();
+			$user->save();
+
+			return Redirect::to('dashboard');
 			
 		}
 
