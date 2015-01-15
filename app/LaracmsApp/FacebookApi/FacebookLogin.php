@@ -1,5 +1,7 @@
 <?php 
 namespace LaracmsApp\FacebookApi;
+use Facebook\FacebookRequest;
+use Facebook\GraphUser;
 
 class FacebookLogin {
 
@@ -8,7 +10,7 @@ class FacebookLogin {
 	public function __construct(MyFacebookRedirectLoginHelper $helper){
 		$this->helper = $helper;
 	}
-	
+
 	/*
 	 * @return FacebookSession object 
 	 */
@@ -23,11 +25,10 @@ class FacebookLogin {
 		return $session;
 	}
 	/*
-	 * @param next_url redirect url 
+	 * @param next_url  
 	 */
 	public function getLogoutUrl($next_url){
-		$session = $this->getSession();
-		$this->helper->getLogoutUrl($session, $next_url);
+		
 	}
 	/*
 	 * @return String url 

@@ -14,8 +14,8 @@ class FacebookServiceProvider extends ServiceProvider{
 
 	public function Register(){
 
-		$this->app->bind('facebook', function(){
-
+		$this->app->bind('FacebookLogin', function(){
+			
 			// FacebookApi Application Id
 			$appId = \Config::get('facebookApi.appId');
 			// FacebookApi Application Secret
