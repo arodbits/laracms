@@ -9,7 +9,7 @@ class FacebookServiceProvider extends ServiceProvider{
 	/*
 	 * Register the ServiceProvider
 	 *
-	 * @return voic
+	 * @return FacebookLogin
 	*/
 
 	public function Register(){

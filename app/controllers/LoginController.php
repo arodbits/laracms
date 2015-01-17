@@ -21,28 +21,24 @@ class LoginController extends BaseController{
 
 		if($session){
 
-			// This will have a better solution, by now let's just stick to it. 
-
-			$request = new FacebookRequest($session, 'GET', '/me/');
+			$request = new FacebookRequest($session, 'GET', '/me');
 			$response = $request->execute();
 			$object = $response->getGraphObject('Facebook\GraphUser');
+		
+			// A class should handle this responsability @param($facebookResponse)
 			
-
-			$user = User::where('email', $object->getEmail())->first();
-
-			if(!$user){
-				
-				$user = new User();
-				$user->email = $object->getEmail();
-				$user->facebook_id=$object->getId();
-				$user->save();
+			// $user = User::where('email', $object->getEmail())->first();
+			$user = App::make("UserRepositoryInterface")->getUser('email',$object->getEmail());
+			
+			if($user){
+				App::make("UserRepositoryInterface")->save($user);
 			}
-
-			$user->facebook_access_token = $session->getToken();
-			$user->save();
+			
 
 			return Redirect::to('dashboard');
 			
+		}else{
+
 		}
 
 	}   

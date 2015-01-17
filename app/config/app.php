@@ -121,7 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'LaracmsApp\FacebookApi\FacebookServiceProvider'
+		'LaracmsApp\FacebookApi\FacebookServiceProvider',
+		'LaracmsApp\User\UserServiceProvider'
 
 	),
 
