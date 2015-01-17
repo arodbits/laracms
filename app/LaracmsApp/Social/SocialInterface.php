@@ -1,4 +1,4 @@
-<?php 
+<?php namespace LaracmsApp\Social;
 
 interface SocialInterface {
 	

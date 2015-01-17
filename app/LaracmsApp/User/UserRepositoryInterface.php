@@ -3,7 +3,7 @@ namespace LaracmsApp\User;
 
 interface UserRepositoryInterface {
 
-	public function save($user);
+	public function create();
 
 	public function getUser($param, $value);
 

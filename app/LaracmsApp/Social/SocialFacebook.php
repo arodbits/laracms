@@ -7,7 +7,7 @@ class SocialFacebook implements SocialInterface{
 
 	protected $helper;
 
-	public function __construct(MyFacebookRedirectLoginHelper $helper){
+	public function __construct($helper){
 		$this->helper = $helper;
 	}
 
@@ -41,8 +41,8 @@ class SocialFacebook implements SocialInterface{
 	// It looks like NO!
 	public function request($session){
 		$request = new FacebookRequest($session, 'GET', '/me');
-		$resposne = $request->execute();
-		$object = $response->getGraphObject('Facebook\UserObject');
+		$response = $request->execute();
+		$object = $response->getGraphObject('Facebook\GraphUser');
 		return $object;
 	}
 

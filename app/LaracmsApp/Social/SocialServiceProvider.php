@@ -1,21 +1,19 @@
-<?php 
-namespace LaracmsApp\Social;
+<?php namespace LaracmsApp\Social;
 
 use Illuminate\Support\ServiceProvider;
 use Facebook\FacebookSession;
 
-class FacebookServiceProvider extends ServiceProvider{
+class SocialServiceProvider extends ServiceProvider{
 
 	/*
 	 * Register the ServiceProvider
 	 *
-	 * @return FacebookLogin
+	 * @return SocialFacebook
 	*/
 
-	public function Register(){
+    public function register(){
 
-		$this->app->bind('FacebookLogin', function(){
-			
+		$this->app->bind('LaracmsApp\Social\SocialInterface', function(){
 			// FacebookApi Application Id
 			$appId = \Config::get('facebookApi.appId');
 			// FacebookApi Application Secret
@@ -25,9 +23,11 @@ class FacebookServiceProvider extends ServiceProvider{
 			// Get the helper from the call
 			$helper = new MyFacebookRedirectLoginHelper(\Config::get('facebookApi.callbackUrl'));
 			// return an instance of the class FacebookLogin. The class takes a MyFacebookRedirectLoginHelper Parameter  
-			return new FacebookLogin($helper);
+			return new SocialFacebook($helper);
+		});	
 
-		});
+
+
 
 	}
 

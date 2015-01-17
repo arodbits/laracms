@@ -2,9 +2,9 @@
 namespace LaracmsApp\User;
 
 class UserMySQLRepository implements UserRepositoryInterface{
-	
-	public function save($data=array()){
-		\User::create($data);
+
+	public function create(){
+		return new \User;
 	}
 
 	public function getUser($param, $value){

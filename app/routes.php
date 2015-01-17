@@ -17,7 +17,6 @@ Route::get('/', function()
 	// return View::make('hello');
 });
 
-
 Route::get('/login','LoginController@index');
 Route::post('/login','LoginController@doLoginWithPassword');
 Route::get('login/facebook', 'LoginController@doLoginWithFacebook');

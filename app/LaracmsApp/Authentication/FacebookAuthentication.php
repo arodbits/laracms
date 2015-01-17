@@ -1,5 +1,4 @@
-<?php
-namespace LaracmsApp\Authentication;
+<?php namespace LaracmsApp\Authentication;
 use LaracmsApp\User\UserRepositoryInterface;
 use LaracmsApp\Social\SocialInterface; 
 
@@ -12,25 +11,18 @@ class FacebookAuthentication implements AuthenticationInterface {
 		$this->social = $social;
 	}
 
-	public function save($user){
-		$user->email = $this->social->getEmail();
-		$user->facebook_id = $social->getId();
-		$user->save($data);
-	}
-
-	public function isAuthenticated(){
-		return $this->social->getSession();
-	}
-
 	public function auth(){
-		$session = $this->isAuthenticated();
+		$session = $this->social->getSession();
+
 		if($session){
 			$object = $this->social->request($session);
 			$user = $this->user->getUser('email',$object->getEmail());
 			if(!$user){
-				User::create($data);
+				$user = $this->user->create();
+				$user->facebook_id=$object->getId();
+				$user->email = $object->getEmail();
 			}
-			$user->facebook_access_token = $this->social->getToken();
+			$user->facebook_access_token = $session->getToken();
 			$user->save();
 			return true;
 		}
