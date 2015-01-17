@@ -1,5 +1,5 @@
 <?php 
-namespace LaracmsApp\FacebookApi\Facades;
+namespace LaracmsApp\Social\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

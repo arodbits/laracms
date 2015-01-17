@@ -1,5 +1,5 @@
 <?php 
-namespace LaracmsApp\FacebookApi; 
+namespace LaracmsApp\Social; 
 
 use Facebook\FacebookRedirectLoginHelper; 
 

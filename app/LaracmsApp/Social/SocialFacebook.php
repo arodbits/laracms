@@ -1,9 +1,9 @@
 <?php 
-namespace LaracmsApp\FacebookApi;
+namespace LaracmsApp\Social;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
 
-class FacebookLogin {
+class SocialFacebook implements SocialInterface{
 
 	protected $helper;
 
@@ -35,6 +35,15 @@ class FacebookLogin {
 	 */
 	public function getLoginUrl($permission=array()){
 		return $this->helper->getLoginUrl($permission);
+	}
+
+	// Should be the next method part of the class?
+	// It looks like NO!
+	public function request($session){
+		$request = new FacebookRequest($session, 'GET', '/me');
+		$resposne = $request->execute();
+		$object = $response->getGraphObject('Facebook\UserObject');
+		return $object;
 	}
 
 } 
