@@ -33,7 +33,7 @@ class FacebookLogin{
 	}
 
 	public function getUserCredentials(){
-
+		
 	}
 
 }

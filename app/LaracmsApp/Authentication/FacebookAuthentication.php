@@ -23,8 +23,9 @@ class FacebookAuthentication {
 		return $this->facebookLogin->getSession();
 	}
 
-	public function auth(){
-		
+	public function authenticate(){
+
+		$fb_credentials = 
 	}
 
 }

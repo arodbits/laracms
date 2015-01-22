@@ -17,4 +17,8 @@ class FacebookHelper{
 		return new MyFacebookRedirectLoginHelper($this->callbackUrl);
 	}
 
+	public function request($session,$method, $req){
+
+	}
+
 }
