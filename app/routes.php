@@ -15,13 +15,15 @@ Route::get('/', function()
 {
 
 	// return View::make('hello');
+		$user = new \LaracmsApp\Repository\UserEloquentRepository(new \LaracmsApp\User);
+		
+		// $data = array('email'=>'carlos@gmail.com', 'password'=>'1234');
+		// $user->create($data);
+		dd($user->getFirstBy('email','carlos@gmail.com'));
 });
 
-Route::get('/login','LoginController@index');
-Route::post('/login','LoginController@doLoginWithPassword');
-Route::get('login/facebook', 'LoginController@doLoginWithFacebook');
-Route::get('login/facebookCallback', 'LoginController@facebookCallback');
-
+Route::get('/login','FacebookLoginController@index');
+Route::get('/login/facebookCallback','FacebookLoginController@facebookCallback');
 
 Route::get('dashboard', 'DashboardController@index');
 

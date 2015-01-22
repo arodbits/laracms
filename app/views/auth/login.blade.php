@@ -14,7 +14,7 @@
 
 	| OR
 
-	{{HTML::link($facebookLoginUrl, 'Sign in with Facebook')}} | 
+	{{HTML::link($loginUrl, 'Sign in with Facebook')}} | 
 	@if(isset($facebookLogoutUrl))
 	{{HTML::link($facebookLogoutUrl, 'LogOut')}}
 	@endif

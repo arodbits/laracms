@@ -1,32 +1,30 @@
-<?php namespace LaracmsApp\Authentication;
-use LaracmsApp\User\UserRepositoryInterface;
-use LaracmsApp\Social\SocialInterface; 
+<?php 
+namespace LaracmsApp\Authentication;
+use LaracmsApp\Repository\UserEloquentRepository; 
+use LaracmsApp\Facebook\FacebookLogin;
 
-class FacebookAuthentication implements AuthenticationInterface {
-
-	protected $user, $social;
+class FacebookAuthentication {
 	
-	public function __construct(UserRepositoryInterface $user, SocialInterface $social){
+	protected $user; 
+	protected $facebookLogin;
+
+	public function __construct(UserEloquentRepository $user, FacebookLogin $facebookLogin){
 		$this->user = $user;
-		$this->social = $social;
+		$this->facebookLogin = $facebookLogin;
+	}
+
+	public function getLoginUrl(){
+		
+		return $this->facebookLogin->getLoginUrl();
+	}
+
+	public function getSession(){
+
+		return $this->facebookLogin->getSession();
 	}
 
 	public function auth(){
-		$session = $this->social->getSession();
-
-		if($session){
-			$object = $this->social->request($session);
-			$user = $this->user->getUser('email',$object->getEmail());
-			if(!$user){
-				$user = $this->user->create();
-				$user->facebook_id=$object->getId();
-				$user->email = $object->getEmail();
-			}
-			$user->facebook_access_token = $session->getToken();
-			$user->save();
-			return true;
-		}
-		return false;
+		
 	}
 
 }

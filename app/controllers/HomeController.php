@@ -17,7 +17,9 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+		// return View::make('hello');
+		$user = new \LaracmsApp\Repository\UserEloquentRepository\User(new \LaracmsApp\User);
+		dd($user->getFirstBy('email','anthonyrodriguez.itt@gmail.com')->email);
 	}
 
 }
