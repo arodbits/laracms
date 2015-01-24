@@ -9,6 +9,7 @@ class DashboardController extends \BaseController {
 	 */
 	public function index()
 	{
+		dd(Auth::user()->email);
 		return View::make('page.dashboard');
 	}
 

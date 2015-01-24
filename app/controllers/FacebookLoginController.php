@@ -20,7 +20,11 @@ class FacebookLoginController extends BaseController{
 		
 		if($session){
 			if(!$this->auth->authenticate()){
-				dd($this->auth->errors());
+				
+			}
+			else{
+				// The user got authenticated and authorized 
+				return Redirect::to('dashboard');
 			}
 		}
 	}

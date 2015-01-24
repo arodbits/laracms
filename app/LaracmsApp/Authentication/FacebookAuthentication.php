@@ -14,6 +14,7 @@ class FacebookAuthentication {
 	protected $facebookUser; 
 	protected $errors = array();
 	protected $validator;
+	protected $userModel;
 
 	public function __construct(FacebookUserCreateValidator $validator, UserEloquentRepository $user, UserFacebookRepository $facebookUser, FacebookLogin $facebookLogin){
 		$this->user = $user;
@@ -39,15 +40,18 @@ class FacebookAuthentication {
 		if ($this->session){
 			// User Data from our repository
 			$facebookUser = $this->getFacebookUser();
-			$userData = $this->getUserFromRepository($facebookUser->getId());
+			$this->userModel = $this->getUserFromRepository($facebookUser->getId());
 			// The user is already registered
-			if($userData){
-				$userData->facebook_access_token = $this->session->getToken();
-				$userData->save();
-				return true;
+			if($this->userModel){
+				$this->userModel->facebook_access_token = $this->session->getToken();
+				$this->userModel->save();
 			}
-				if($this->registerUser($this->getFacebookUser()))
-				return true;
+			// The user got authenticated and Authorized
+			else if(!$this->registerUser($this->getFacebookUser()))
+				return false;
+
+			\Auth::login($this->userModel);
+			return true;
 		}
 		$this->errors[] ="The authentication process did not succeed";
 		return false;
@@ -69,15 +73,14 @@ class FacebookAuthentication {
 			"facebook_id" => $response->getId()
 		);
 
-		if($this->validate($newUser)){
-			$this->user->create($newUser);
+		if($this->validate($userData)){
+			$this->userModel = $this->user->create($newUser);
 			return true;
 		}
 		return false;
-
 	}
 
-	private function validate($userData){
+	private function validate(){
 		$isValid = $this->validator->with($userData)->passes();
 		if($isValid)
 			return true;
