@@ -29,7 +29,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface{
 	 * The fillable fields
 	 */
 	
-	protected $fillable = ['username','password','fb_token','fbId'];
+	protected $fillable = ['email','password','facebook_access_token','facebook_id'];
 
 	
 }

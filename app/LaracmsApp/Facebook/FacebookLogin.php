@@ -16,13 +16,13 @@ class FacebookLogin{
 		return $this->helper->make()->getLoginUrl();
 	}
 
-	public function getSession(){
+	public function getSessionFromRedirect(){
 		$session = null;
 		$helper = $this->helper->make();
 		try {
 			$session = $helper->getSessionFromRedirect();
 		} catch(FacebookRequestException $ex) {
-    		// When Facebook returns an error
+    		
 		} catch(\Exception $ex) {
    			// When validation fails or other local issues
 		}
@@ -30,10 +30,6 @@ class FacebookLogin{
   			// Logged in.
 		}
 		return $session;
-	}
-
-	public function getUserCredentials(){
-		
 	}
 
 }

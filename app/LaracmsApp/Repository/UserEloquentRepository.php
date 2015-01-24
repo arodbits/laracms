@@ -21,10 +21,16 @@ class UserEloquentRepository {
 	public function make(array $with=array()){
 		return $this->model->with($with);
 	}
-
+	/**
+	 * Create a new user
+	 * @param  array  $data
+	 * @return Model       
+	 */
 	public function create(array $data = array()){
-		$this->model->create($data);
+		return $this->model->create($data);
 	}
+
+
 	
 
 }

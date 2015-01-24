@@ -16,10 +16,12 @@ class FacebookLoginController extends BaseController{
 	}
 
 	public function facebookCallback(){
-		$session = $this->auth->getSession();
-
+		$session = $this->auth->getSessionFromRedirect();
+		
 		if($session){
-			$this->auth->authenticate();
+			if(!$this->auth->authenticate()){
+				dd($this->auth->errors());
+			}
 		}
 	}
 

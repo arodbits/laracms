@@ -1,6 +1,7 @@
 <?php 
 namespace LaracmsApp\Facebook;
 use Facebook\FacebookSession;
+use Facebook\FacebookRequest;
 
 class FacebookHelper{
 	
@@ -15,10 +16,6 @@ class FacebookHelper{
 
 	public function make(){
 		return new MyFacebookRedirectLoginHelper($this->callbackUrl);
-	}
-
-	public function request($session,$method, $req){
-
 	}
 
 }
