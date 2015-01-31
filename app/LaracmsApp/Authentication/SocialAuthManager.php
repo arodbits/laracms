@@ -1,4 +1,5 @@
 <?php 
+namespace LaracmsApp\Authentication;
 
 class SocialAuthManager {
 	private $providers = array();

@@ -27,8 +27,8 @@ Route::get('/login/facebookCallback','FacebookLoginController@facebookCallback')
 
 Route::get('dashboard', 'DashboardController@index');
 
-Route::get('/login/{provider}', 'LoginController'@'index');
-Route::get('/login/{provider}/callback', 'LoginController'@'callback');
+Route::get('/login/{provider}', 'LoginController@index');
+Route::get('/login/{provider}/callback', 'LoginController@callback');
 
 
 
